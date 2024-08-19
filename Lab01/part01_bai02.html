@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 02</title>
+</head>
+<body>
+    <script>
+        // Dữ liệu 1
+        let markMass1 = 78; 
+        let markHeight1 = 1.69; 
+        let johnMass1 = 92; 
+        let johnHeight1 = 1.95; 
+        // Tính BMI
+        let markBMI1 = markMass1 / (markHeight1 * markHeight1);
+        let johnBMI1 = johnMass1 / (johnHeight1 * johnHeight1);
+        // So sánh BMI
+        if (markBMI1 > johnBMI1) {
+            console.log(`BMI của Mark (${markBMI1.toFixed(1)}) cao hơn BMI của John (${johnBMI1.toFixed(1)})!`);
+        } else {
+            console.log(`BMI của John (${johnBMI1.toFixed(1)}) cao hơn BMI của Mark (${markBMI1.toFixed(1)})!`);
+        }
+        // Dữ liệu 2
+        let markMass2 = 95; 
+        let markHeight2 = 1.88; 
+        let johnMass2 = 85; 
+        let johnHeight2 = 1.76; 
+        // Tính BMI
+        let markBMI2 = markMass2 / (markHeight2 * markHeight2);
+        let johnBMI2 = johnMass2 / (johnHeight2 * johnHeight2);
+        // So sánh BMI
+        if (markBMI2 > johnBMI2) {
+            console.log(`BMI của Mark (${markBMI2.toFixed(1)}) cao hơn BMI của John (${johnBMI2.toFixed(1)})!`);
+        } else {
+            console.log(`BMI của John (${johnBMI2.toFixed(1)}) cao hơn BMI của Mark (${markBMI2.toFixed(1)})!`);
+        }
+    </script>
+</body>
+</html>
