@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 01</title>
+</head>
+<body>
+    <script>
+        const game = {
+            team1: 'Bayern Munich',
+            team2: 'Borussia Dortmund',
+            players: [
+                [
+                    'Neuer',
+                    'Pavard',
+                    'Martinez',
+                    'Alaba',
+                    'Davies',
+                    'Kimmich',
+                    'Goretzka',
+                    'Coman',
+                    'Muller',
+                    'Gnarby',
+                    'Lewandowski'
+                ],
+                [
+                    'Burki',
+                    'Schulz',
+                    'Hummels',
+                    'Akanji',
+                    'Hakimi',
+                    'Weigl',
+                    'Witsel',
+                    'Hazard',
+                    'Brandt',
+                    'Sancho',
+                    'Gotze'
+                ]
+            ],
+            score: '4:0',
+            scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+            date: 'Nov 9th, 2037',
+            odds: {
+                team1: 1.33,
+                x: 3.25,
+                team2: 6.5
+            }
+        };
+        // Tạo mảng cầu thủ cho mỗi đội
+        const players1 = game.players[0];
+        const players2 = game.players[1];
+        // Tách thủ môn và các cầu thủ còn lại cho đội 1
+        const gk = players1[0];
+        const fieldPlayers = players1.slice(1);
+        // Tạo mảng allPlayers chứa tất cả các cầu thủ
+        const allPlayers = [...players1, ...players2];
+        // Thêm cầu thủ dự bị cho đội 1
+        const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+        // Tạo các biến cho từng tỉ lệ cá cược
+        const { team1: team1Odd, x: drawOdd, team2: team2Odd } = game.odds;
+        // Viết hàm printGoals
+        function printGoals(...players) {
+            console.log(`Các cầu thủ ghi bàn: ${players.join(', ')}`);
+            console.log(`Tổng số bàn thắng ghi được: ${players.length}`);
+        }
+        // Gọi hàm với dữ liệu mẫu
+        printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+        // Gọi hàm với dữ liệu từ game.scored
+        printGoals(...game.scored);
+        // Bước 7: Xác định đội có khả năng thắng cao hơn
+        const odds = [team1Odd, drawOdd, team2Odd];
+        const teams = [game.team1, 'Hòa', game.team2];
+        const minOddIndex = odds.indexOf(Math.min(...odds));
+        console.log(`${teams[minOddIndex]} có khả năng thắng cao hơn`);
+    </script>
+</body>
+</html>
