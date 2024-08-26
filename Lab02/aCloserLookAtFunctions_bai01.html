@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 01</title>
+</head>
+<body>
+    <script>
+        // Đối tượng poll
+        const poll = {
+            question: "What is your favourite programming language?",
+            options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+            answers: new Array(4).fill(0),
+            // Phương thức đăng ký câu trả lời mới
+            registerNewAnswer() {
+                // Hiển thị hộp thoại prompt để người dùng nhập lựa chọn
+                const input = prompt(`${this.question}\n${this.options.join('\n')}\n(Write option number)`);
+                // Chuyển đổi đầu vào thành số và kiểm tra tính hợp lệ
+                const answer = Number(input);
+                if (Number.isInteger(answer) && answer >= 0 && answer < this.answers.length) {
+                    // Cập nhật số lượng câu trả lời
+                    this.answers[answer]++;
+                    // Hiển thị kết quả cuộc khảo sát
+                    this.displayResults();
+                } else {
+                    console.log('Invalid input. Please enter a valid number.');
+                }
+            },
+            // Phương thức hiển thị kết quả
+            displayResults(type = 'array') {
+                if (type === 'array') {
+                    console.log(this.answers);
+                } else if (type === 'string') {
+                    console.log(`Poll results are ${this.answers.join(', ')}`);
+                } else {
+                    console.log('Invalid type. Use "array" or "string".');
+                }
+            }
+        };
+        // Thêm nút "Answer poll" vào trang và gán sự kiện click
+        document.body.append(document.createElement('button'));
+        const button = document.querySelector('button');
+        button.textContent = 'Answer poll';
+        button.addEventListener('click', () => poll.registerNewAnswer());
+        // Hiển thị kết quả của hai mảng thử nghiệm (bài tập mở rộng)
+        const testData1 = [5, 2, 3];
+        const testData2 = [1, 5, 3, 9, 6, 1];
+        console.log('Test Data 1:');
+        poll.displayResults.call({ answers: testData1 }, 'array');
+        poll.displayResults.call({ answers: testData1 }, 'string');
+        console.log('Test Data 2:');
+        poll.displayResults.call({ answers: testData2 }, 'array');
+        poll.displayResults.call({ answers: testData2 }, 'string');
+    </script>
+</body>
+</html>
