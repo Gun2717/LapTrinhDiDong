@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 02</title>
+</head>
+<body>
+    <script>
+        // Dữ liệu ví dụ cho game
+        const game = {
+            scored: ['Lewandowski', 'Gnabry', 'Lewandowski'],
+            odds: {
+                team1: 1.33,
+                draw: 3.25,
+                team2: 6.5
+            },
+            teams: ['Bayern Munich', 'Borussia Dortmund']
+        };
+        // In tên cầu thủ và số bàn thắng
+        for (let i = 0; i < game.scored.length; i++) {
+            console.log(`Bàn thắng ${i + 1}: ${game.scored[i]}`);
+        }
+        // Tính toán trung bình của các tỉ lệ cá cược
+        const odds = Object.values(game.odds); // Lấy tất cả các giá trị tỉ lệ cá cược
+        const averageOdd = odds.reduce((acc, odd) => acc + odd, 0) / odds.length;
+        console.log(`Trung bình tỉ lệ cá cược: ${averageOdd.toFixed(2)}`);
+        // In các tỉ lệ cá cược theo định dạng yêu cầu
+        console.log(`Tỉ lệ chiến thắng của ${game.teams[0]}: ${game.odds.team1}`);
+        console.log(`Tỉ lệ hòa: ${game.odds.draw}`);
+        console.log(`Tỉ lệ chiến thắng của ${game.teams[1]}: ${game.odds.team2}`);
+        // Tạo đối tượng scorers chứa tên cầu thủ và số bàn thắng
+        const scorers = game.scored.reduce((acc, player) => {
+            acc[player] = acc[player] ? acc[player] + 1 : 1;
+            return acc;
+        }, {});
+        console.log('Cầu thủ ghi bàn và số bàn thắng:', scorers);
+    </script>
+</body>
+</html>
