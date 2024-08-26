@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript in the Browser: DOM and Events</title>
+    <style>
+        .number {
+            width: 15rem;
+            height: 15rem;
+            font-size: 6rem;
+            text-align: center;
+            line-height: 15rem;
+            margin: 2rem auto;
+            background-color: #222;
+            color: #fff;
+            border-radius: 50%;
+        }
+        .message, .score, .guess {
+            text-align: center;
+            margin: 1rem;
+        }
+        .again {
+            display: block;
+            margin: 1rem auto;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">Bắt đầu đoán nào...</div>
+    <div class="number">?</div>
+    <div class="score">Điểm: 20</div>
+    <input type="number" class="guess" placeholder="Nhập số">
+    <button class="again">Chơi lại!</button>
+    <script>
+        // Khởi tạo trạng thái trò chơi
+        let diem = 20; // Điểm số ban đầu
+        let soBiMat = Math.trunc(Math.random() * 20) + 1; // Số bí mật ngẫu nhiên
+        // Hàm khôi phục trò chơi
+        function khoiPhucTroChoi() {
+            // Khôi phục giá trị ban đầu
+            diem = 20;
+            soBiMat = Math.trunc(Math.random() * 20) + 1;
+            // Khôi phục các điều kiện ban đầu
+            document.querySelector('.message').textContent = 'Bắt đầu đoán nào...'; // Thay đổi thông báo
+            document.querySelector('.number').textContent = '?'; // Thay đổi số bí mật thành dấu hỏi
+            document.querySelector('.score').textContent = `Điểm: ${diem}`; // Khôi phục điểm số
+            document.querySelector('.guess').value = ''; // Xóa trường nhập số
+            // Khôi phục màu nền và kích thước của phần tử số
+            const phanTuSo = document.querySelector('.number');
+            phanTuSo.style.backgroundColor = '#222';
+            phanTuSo.style.width = '15rem';
+            phanTuSo.style.height = '15rem';
+        }
+        // Gán sự kiện click cho nút "Chơi lại!"
+        document.querySelector('.again').addEventListener('click', khoiPhucTroChoi);
+    </script>
+</body>
+</html>
