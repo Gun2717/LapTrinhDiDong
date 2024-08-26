@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 04</title>
+</head>
+<body>
+    <script>
+        // Thêm textarea và button vào trang
+        document.body.append(document.createElement('textarea'));
+        document.body.append(document.createElement('button'));
+        // Lấy các phần tử textarea và button
+        const textarea = document.querySelector('textarea');
+        const button = document.querySelector('button');
+        // Đặt văn bản cho button
+        button.textContent = 'Chuyển đổi';
+        // Thêm sự kiện cho button
+        button.addEventListener('click', function() {
+            // Lấy giá trị từ textarea và tách thành các dòng
+            const text = textarea.value;
+            const lines = text.split('\n'); // Chia văn bản thành các dòng dựa trên ký tự xuống dòng
+            // Xử lý từng dòng văn bản
+            lines.forEach((line, index) => {
+                // Loại bỏ khoảng trắng xung quanh và chuyển đổi thành camelCase
+                const [first, second] = line.toLowerCase().trim().split('_');
+                const camelCase = first + second.charAt(0).toUpperCase() + second.slice(1);
+                // Tạo chuỗi dấu kiểm ✅
+                const checkMarks = '✅'.repeat(index + 1);
+                // In ra kết quả
+                console.log(`${camelCase} ${checkMarks}`);
+            });
+        });
+    </script>
+</body>
+</html>
