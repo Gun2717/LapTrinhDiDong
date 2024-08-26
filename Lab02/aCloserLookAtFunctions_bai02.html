@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 02</title>
+</head>
+<body>
+    <script>
+        (function () {
+            // Lấy phần tử h1 và thiết lập màu sắc ban đầu
+            const header = document.querySelector('h1');
+            header.style.color = 'red';
+            // Thêm sự kiện lắng nghe cho body
+            document.body.addEventListener('click', function() {
+                // Thay đổi màu của h1 thành màu xanh
+                header.style.color = 'blue';
+            });
+        })();
+    </script>
+</body>
+</html>
